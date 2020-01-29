@@ -1,0 +1,40 @@
+<idea-plugin>
+  <id>com.kablemonck.idea.plugins.ChangeListSwitcher</id>
+  <name>Changelist Switcher</name>
+  <version>1.0.0</version>
+  <vendor email="kable.monck@gmail.com">Kable Monck</vendor>
+
+  <description><![CDATA[
+      A popup to quickly switch the current version control changelist.<br>
+      Activate via <b>Main Menu → VCS → Switch Changelist</b> or by the default keyboard shortcut <b>meta + alt + F3</b>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      <b>1.0.0</b><br>
+      Added the main change list switcher action<br>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.modules.vcs</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action class="com.kablemonck.idea.plugins.switchchangelist.ChangeListSwitcherAction"
+            text="Switch Changelist"
+            description="Switch the current version control changelist">
+      <add-to-group group-id="VcsGroups"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="meta alt F3"/>
+    </action>
+  </actions>
+
+</idea-plugin>
