@@ -1,4 +1,4 @@
-#Changelist Popup
+# Changelist Popup
 IntelliJ Platform plugin to quickly switch, edit and remove version control changelists via keyboard shortcut and popup
 
 ![Usage Screenshot](images/usage-screenshot.png)
@@ -7,11 +7,11 @@ IntelliJ Platform plugin to quickly switch, edit and remove version control chan
 Activate via the default keyboard shortcut `control + alt + F3` (Mac: `command + option + F3`)
 
 ## Changes
-###1.0.1
+### 1.0.1
  * New Changelist option
  * Edit and remove changelists
  
-###1.0.0
+### 1.0.0
  * Main change list switcher action
     
 ## Roadmap & Ideas
