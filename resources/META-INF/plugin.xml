@@ -1,4 +1,4 @@
-<idea-plugin>
+<idea-plugin url="https://github.com/KableM/ChangelistSwitcher">
   <id>com.kablemonck.idea.plugins.ChangeListSwitcher</id>
   <name>Changelist Switcher</name>
   <version>1.0.0</version>
