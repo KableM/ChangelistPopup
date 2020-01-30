@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/KableM/ChangelistPopup">
   <id>com.kablemonck.idea.plugins.ChangeListPopup</id>
   <name>Changelist Popup</name>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <vendor email="kable.monck@gmail.com">Kable Monck</vendor>
 
   <description><![CDATA[
