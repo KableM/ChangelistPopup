@@ -1,15 +1,19 @@
-<idea-plugin url="https://github.com/KableM/ChangelistSwitcher">
-  <id>com.kablemonck.idea.plugins.ChangeListSwitcher</id>
-  <name>Changelist Switcher</name>
+<idea-plugin url="https://github.com/KableM/ChangelistPopup">
+  <id>com.kablemonck.idea.plugins.ChangeListPopup</id>
+  <name>Changelist Popup</name>
   <version>1.0.0</version>
   <vendor email="kable.monck@gmail.com">Kable Monck</vendor>
 
   <description><![CDATA[
-      A popup to quickly switch the current version control changelist.<br>
-      Activate via <b>Main Menu → VCS → Switch Changelist</b> or by the default keyboard shortcut <b>meta + alt + F3</b>
+      A popup to quickly switch, edit and remove version control changelists.<br>
+      Activate via the default keyboard shortcut <b>control + alt + F3</b> (Mac: <b>command + option + F3</b>)
     ]]></description>
 
   <change-notes><![CDATA[
+      <b>1.0.1</b><br>
+      New Changelist option<br>
+      Edit and remove changelists<br>
+      <br>
       <b>1.0.0</b><br>
       Added the main change list switcher action<br>
     ]]>
@@ -29,11 +33,11 @@
 
   <actions>
     <!-- Add your actions here -->
-    <action class="com.kablemonck.idea.plugins.switchchangelist.ChangeListSwitcherAction"
-            text="Switch Changelist"
-            description="Switch the current version control changelist">
-      <add-to-group group-id="VcsGroups"/>
-      <keyboard-shortcut keymap="$default" first-keystroke="meta alt F3"/>
+    <action class="com.kablemonck.idea.plugins.changelistpopup.ChangeListPopupAction"
+            text="Changelists"
+            description="Popup to add, edit and remove version control changelists">
+      <keyboard-shortcut keymap="$default" first-keystroke="control alt F3"/>
+      <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta alt F3" replace-all="true"/>
     </action>
   </actions>
 
