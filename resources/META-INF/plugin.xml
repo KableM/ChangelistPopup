@@ -29,6 +29,7 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
+    <statusBarWidgetProvider implementation="com.kablemonck.idea.plugins.changelistpopup.status.ChangeListStatusBarWidgetProvider"/>
   </extensions>
 
   <actions>

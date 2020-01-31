@@ -16,6 +16,6 @@ Activate via the default keyboard shortcut `control + alt + F3` (Mac: `command +
     
 ## Roadmap & Ideas
  * Settings UI
- * Show active changelist in status bar
  * Cut down long changelist names
  * Add num files to changelist name 
+ * More options: commit, revert, move changes, show diff

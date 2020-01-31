@@ -1,6 +1,7 @@
 package com.kablemonck.idea.plugins.changelistpopup;
 
 import com.intellij.icons.AllIcons;
+import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataContext;
@@ -14,8 +15,8 @@ import com.intellij.openapi.vcs.changes.LocalChangeList;
 import com.intellij.openapi.vcs.changes.actions.RemoveChangeListAction;
 import com.intellij.openapi.vcs.changes.ui.EditChangelistDialog;
 import com.intellij.util.ui.EmptyIcon;
+import com.kablemonck.idea.plugins.changelistpopup.util.TextUtil;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 
@@ -36,7 +37,7 @@ public class ChangeListActionGroup extends DefaultActionGroup {
     };
 
     public ChangeListActionGroup(Project project, LocalChangeList changeList, boolean isActiveChangelist) {
-        super(changeList.getName(), true);
+        super(TextUtil.wrap(changeList.getName(), 50, TextUtil.TextWrapStrategy.MIDDLE), true);
         this.project = project;
         this.changeList = changeList;
         changeListManager = ChangeListManager.getInstance(project);
@@ -61,21 +62,17 @@ public class ChangeListActionGroup extends DefaultActionGroup {
         DumbAwareAction removeAction = new DumbAwareAction("Remove...", null, AllIcons.General.Remove) {
             @Override
             public void actionPerformed(@NotNull AnActionEvent anActionEvent) {
-                DataContext dataContext = new DataContext() {
-                    @Nullable
-                    @Override
-                    public Object getData(@NotNull String dataId) {
-                        if (CommonDataKeys.PROJECT.is(dataId)) {
-                            return project;
-                        } else if (VcsDataKeys.CHANGE_LISTS.is(dataId)) {
-                            return new LocalChangeList[]{changeList};
-                        }
-                        return null;
+                DataContext dataContext = dataId -> {
+                    if (CommonDataKeys.PROJECT.is(dataId)) {
+                        return project;
+                    } else if (VcsDataKeys.CHANGE_LISTS.is(dataId)) {
+                        return new LocalChangeList[]{changeList};
                     }
+                    return null;
                 };
                 RemoveChangeListAction action = new RemoveChangeListAction();
 
-                action.actionPerformed(AnActionEvent.createFromDataContext("", null, dataContext));
+                action.actionPerformed(AnActionEvent.createFromDataContext(ActionPlaces.POPUP, null, dataContext));
             }
         };
 

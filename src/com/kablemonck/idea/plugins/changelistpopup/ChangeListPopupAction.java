@@ -24,6 +24,10 @@ public class ChangeListPopupAction extends QuickSwitchSchemeAction implements Du
 
     @Override
     protected void fillActions(Project project, @NotNull DefaultActionGroup group, @NotNull DataContext dataContext) {
+        addActions(project, group);
+    }
+
+    public static void addActions(Project project, @NotNull DefaultActionGroup group) {
         ChangeListManager manager = ChangeListManager.getInstance(project);
         LocalChangeList defaultChangeList = manager.getDefaultChangeList();
         List<LocalChangeList> changeLists = manager.getChangeLists();
