@@ -1,5 +1,5 @@
 # Changelist Popup
-IntelliJ Platform plugin to quickly switch, edit and remove version control changelists via keyboard shortcut and popup
+IntelliJ Platform plugin to quickly manage version control changelists via a keyboard shortcut, popup and status bar widget
 
 ![Usage Screenshot](images/usage-screenshot.png)
 

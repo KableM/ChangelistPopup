@@ -5,7 +5,7 @@
   <vendor email="kable.monck@gmail.com">Kable Monck</vendor>
 
   <description><![CDATA[
-      A popup to quickly switch, edit and remove version control changelists.<br>
+      A popup and status bar widget to quickly manage version control changelists.<br>
       Activate via the default keyboard shortcut <b>control + alt + F3</b> (Mac: <b>command + option + F3</b>)
     ]]></description>
 
