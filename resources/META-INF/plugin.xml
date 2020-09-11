@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/KableM/ChangelistPopup">
   <id>com.kablemonck.idea.plugins.ChangeListPopup</id>
   <name>Changelist Popup</name>
-  <version>1.0.1</version>
+  <version>1.1.0</version>
   <vendor email="kable.monck@gmail.com">Kable Monck</vendor>
 
   <description><![CDATA[
@@ -10,12 +10,23 @@
     ]]></description>
 
   <change-notes><![CDATA[
+      <b>1.1.0</b><br>
+      <ul>
+        <li>Added a status bar widget showing the active changelist. Clicking on it will open the popup</li>
+        <li>Add number of changed files to changelist names</li>
+        <li>Added extra VCS actions: Commit, Rollback, Move Changes, Show Diff, Shelve Changes<br></li>
+      </ul>
+      <br>
       <b>1.0.1</b><br>
-      New Changelist option<br>
-      Edit and remove changelists<br>
+      <ul>
+        <li>New Changelist option</li>
+        <li>Edit and remove changelists</li>
+      </ul>
       <br>
       <b>1.0.0</b><br>
-      Added the main change list switcher action<br>
+      <ul>
+        <li>Added the main change list switcher action</li>
+      </ul>
     ]]>
   </change-notes>
 
@@ -29,7 +40,7 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
-    <statusBarWidgetProvider implementation="com.kablemonck.idea.plugins.changelistpopup.status.ChangeListStatusBarWidgetProvider"/>
+    <statusBarWidgetFactory implementation="com.kablemonck.idea.plugins.changelistpopup.status.ChangeListStatusBarWidgetFactory" />
   </extensions>
 
   <actions>
