@@ -3,6 +3,7 @@ package com.kablemonck.idea.plugins.changelistpopup.status;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.actionSystem.impl.SimpleDataContext;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
@@ -11,6 +12,7 @@ import com.intellij.openapi.ui.popup.ListPopup;
 import com.intellij.openapi.vcs.changes.ChangeList;
 import com.intellij.openapi.vcs.changes.ChangeListListener;
 import com.intellij.openapi.vcs.changes.ChangeListManager;
+import com.intellij.openapi.wm.IdeFocusManager;
 import com.intellij.openapi.wm.StatusBarWidget;
 import com.intellij.openapi.wm.impl.status.EditorBasedWidget;
 import com.intellij.util.Consumer;
@@ -20,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 
 /**
@@ -71,7 +74,10 @@ public class ChangeListStatusBarWidget extends EditorBasedWidget implements Stat
         JBPopupFactory.ActionSelectionAid aid = JBPopupFactory.ActionSelectionAid.SPEEDSEARCH;
         DefaultActionGroup group = new DefaultActionGroup();
         ChangeListPopupAction.addActions(myProject, group);
-        DataContext dataContext = SimpleDataContext.getProjectContext(myProject);
+        DataContext projectContext = SimpleDataContext.getProjectContext(myProject);
+        Component component = IdeFocusManager.getInstance(myProject).getFocusOwner();
+        DataContext dataContext = SimpleDataContext.getSimpleContext(PlatformDataKeys.CONTEXT_COMPONENT, component, projectContext);
+
         ListPopup popup = JBPopupFactory.getInstance().createActionGroupPopup("Changelists", group, dataContext, aid, true);
         return popup;
     }

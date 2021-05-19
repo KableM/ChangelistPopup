@@ -2,6 +2,7 @@ package com.kablemonck.idea.plugins.changelistpopup;
 
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.actions.QuickSwitchSchemeAction;
+import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -9,11 +10,14 @@ import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.DumbAwareAction;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
+import com.intellij.openapi.util.Condition;
 import com.intellij.openapi.vcs.changes.ChangeListManager;
 import com.intellij.openapi.vcs.changes.LocalChangeList;
 import com.intellij.openapi.vcs.changes.actions.AddChangeListAction;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -21,6 +25,8 @@ import java.util.List;
  * @author Kable Monck
  */
 public class ChangeListPopupAction extends QuickSwitchSchemeAction implements DumbAware {
+
+    private static final Condition<? super AnAction> PRESELECT_ACTION = (a) -> a.getTemplatePresentation().getIcon() == AllIcons.Actions.Forward;
 
     @Override
     protected void fillActions(Project project, @NotNull DefaultActionGroup group, @NotNull DataContext dataContext) {
@@ -30,7 +36,7 @@ public class ChangeListPopupAction extends QuickSwitchSchemeAction implements Du
     public static void addActions(Project project, @NotNull DefaultActionGroup group) {
         ChangeListManager manager = ChangeListManager.getInstance(project);
         LocalChangeList defaultChangeList = manager.getDefaultChangeList();
-        List<LocalChangeList> changeLists = manager.getChangeLists();
+        List<LocalChangeList> changeLists = new ArrayList<>(manager.getChangeLists());
         changeLists.sort(Comparator.comparing(LocalChangeList::getName));
         for (LocalChangeList changeList : changeLists) {
             boolean isDefaultChangeList = defaultChangeList.getName().equals(changeList.getName());
@@ -50,5 +56,11 @@ public class ChangeListPopupAction extends QuickSwitchSchemeAction implements Du
     @Override
     protected JBPopupFactory.ActionSelectionAid getAidMethod() {
         return JBPopupFactory.ActionSelectionAid.SPEEDSEARCH;
+    }
+
+    @Nullable
+    @Override
+    protected Condition<? super AnAction> preselectAction() {
+        return PRESELECT_ACTION;
     }
 }

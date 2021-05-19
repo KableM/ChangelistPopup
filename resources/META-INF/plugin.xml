@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/KableM/ChangelistPopup">
   <id>com.kablemonck.idea.plugins.ChangeListPopup</id>
   <name>Changelist Popup</name>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
   <vendor email="kable.monck@gmail.com">Kable Monck</vendor>
 
   <description><![CDATA[
@@ -10,6 +10,11 @@
     ]]></description>
 
   <change-notes><![CDATA[
+      <b>1.1.1</b><br>
+      <ul>
+        <li>Fix compatibility with 211.*</li>
+      </ul>
+      <br>
       <b>1.1.0</b><br>
       <ul>
         <li>Added a status bar widget showing the active changelist. Clicking on it will open the popup</li>
@@ -31,7 +36,7 @@
   </change-notes>
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="201.8743" until-build="202.*"/>
+  <idea-version since-build="201.8743" until-build="211.*"/>
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
        on how to target different products -->
