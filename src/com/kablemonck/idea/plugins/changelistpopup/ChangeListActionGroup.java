@@ -37,12 +37,7 @@ public class ChangeListActionGroup extends DefaultActionGroup {
     private final Project project;
     private final LocalChangeList changeList;
 
-    protected static final Icon ourNotCurrentAction = new IconLoader.LazyIcon() {
-        @NotNull
-        protected Icon compute() {
-            return EmptyIcon.create(AllIcons.Actions.Forward.getIconWidth(), AllIcons.Actions.Forward.getIconHeight());
-        }
-    };
+    protected static final Icon ourNotCurrentAction = IconLoader.createLazy(() -> EmptyIcon.create(AllIcons.Actions.Forward.getIconWidth(), AllIcons.Actions.Forward.getIconHeight()));
 
     public ChangeListActionGroup(Project project, LocalChangeList changeList, boolean isActiveChangelist) {
         super(getActionName(changeList), true);

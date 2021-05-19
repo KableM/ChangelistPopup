@@ -10,6 +10,10 @@
     ]]></description>
 
   <change-notes><![CDATA[
+      <b>1.1.2</b><br>
+      <ul>
+        <li>Change compatibility to 211.* only</li>
+      </ul>
       <b>1.1.1</b><br>
       <ul>
         <li>Fix compatibility with 211.*</li>
@@ -36,7 +40,7 @@
   </change-notes>
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="201.8743" until-build="211.*"/>
+  <idea-version since-build="211" until-build="211.*"/>
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
        on how to target different products -->
