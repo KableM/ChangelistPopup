@@ -1,15 +1,19 @@
 <idea-plugin url="https://github.com/KableM/ChangelistPopup">
-  <id>com.kablemonck.idea.plugins.ChangeListPopup</id>
-  <name>Changelist Popup</name>
-  <version>1.1.1</version>
-  <vendor email="kable.monck@gmail.com">Kable Monck</vendor>
+    <id>com.kablemonck.idea.plugins.ChangeListPopup</id>
+    <name>Changelist Popup</name>
+    <version>1.1.3</version>
+    <vendor email="kable.monck@gmail.com">Kable Monck</vendor>
 
-  <description><![CDATA[
+    <description><![CDATA[
       A popup and status bar widget to quickly manage version control changelists.<br>
       Activate via the default keyboard shortcut <b>control + alt + F3</b> (Mac: <b>command + option + F3</b>)
     ]]></description>
 
-  <change-notes><![CDATA[
+    <change-notes><![CDATA[
+      <b>1.1.3</b><br>
+      <ul>
+        <li>Change compatibility to 212.*</li>
+      </ul>
       <b>1.1.2</b><br>
       <ul>
         <li>Change compatibility to 211.* only</li>
@@ -37,29 +41,37 @@
         <li>Added the main change list switcher action</li>
       </ul>
     ]]>
-  </change-notes>
+    </change-notes>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="211" until-build="211.*"/>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="211" until-build="212.*"/>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <depends>com.intellij.modules.platform</depends>
-  <depends>com.intellij.modules.vcs</depends>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.vcs</depends>
 
-  <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
-    <statusBarWidgetFactory implementation="com.kablemonck.idea.plugins.changelistpopup.status.ChangeListStatusBarWidgetFactory" />
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <statusBarWidgetFactory implementation="com.kablemonck.idea.plugins.changelistpopup.status.ChangeListStatusBarWidgetFactory"/>
+    </extensions>
 
-  <actions>
-    <!-- Add your actions here -->
-    <action class="com.kablemonck.idea.plugins.changelistpopup.ChangeListPopupAction"
-            text="Changelists"
-            description="Popup to add, edit and remove version control changelists">
-      <keyboard-shortcut keymap="$default" first-keystroke="control alt F3"/>
-      <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta alt F3" replace-all="true"/>
-    </action>
-  </actions>
+    <actions>
+        <!-- Add your actions here -->
+<!--        <action class="com.kablemonck.idea.plugins.changelistpopup.ChangeListPopupAction"-->
+<!--                text="Changelists"-->
+<!--                description="Popup to add, edit and remove version control changelists">-->
+<!--            <keyboard-shortcut keymap="$default" first-keystroke="control alt F3"/>-->
+<!--            <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta alt F3" replace-all="true"/>-->
+<!--        </action>-->
+        <action id="com.kablemonck.idea.plugins.changelistpopup.ChangeListPopupAction"
+                class="com.kablemonck.idea.plugins.changelistpopup.ChangeListPopupAction"
+                text="KableChangelists"
+                description="Popup to add, edit and remove version control changelists">
+            <add-to-group group-id="Vcs.MainMenu"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="meta alt F3"/>
+            <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta alt F3" replace-all="true"/>
+        </action>
+    </actions>
 
 </idea-plugin>
