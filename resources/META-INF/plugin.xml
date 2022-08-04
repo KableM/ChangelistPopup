@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/KableM/ChangelistPopup">
     <id>com.kablemonck.idea.plugins.ChangeListPopup</id>
     <name>Changelist Popup</name>
-    <version>1.1.4</version>
+    <version>1.1.5</version>
     <vendor email="kable.monck@gmail.com">Kable Monck</vendor>
 
     <description><![CDATA[
@@ -44,7 +44,7 @@
     </change-notes>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="211" until-build="212.*"/>
+    <idea-version since-build="211"/>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
@@ -57,13 +57,6 @@
     </extensions>
 
     <actions>
-        <!-- Add your actions here -->
-<!--        <action class="com.kablemonck.idea.plugins.changelistpopup.ChangeListPopupAction"-->
-<!--                text="Changelists"-->
-<!--                description="Popup to add, edit and remove version control changelists">-->
-<!--            <keyboard-shortcut keymap="$default" first-keystroke="control alt F3"/>-->
-<!--            <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta alt F3" replace-all="true"/>-->
-<!--        </action>-->
         <action id="com.kablemonck.idea.plugins.changelistpopup.ChangeListPopupAction"
                 class="com.kablemonck.idea.plugins.changelistpopup.ChangeListPopupAction"
                 text="Changelists"
